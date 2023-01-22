@@ -1,0 +1,160 @@
+#:kivy 2.1.0
+
+<Home>:
+    MDFloatLayout:
+        md_bg_color: [1,1,1,1]
+
+        MDLabel:
+            id:loc_time
+            text: "  :  "
+            pos_hint: {'center_x': .5,'center_y': .82}
+            halign:"center"
+            markup: True
+            color: rgba(101, 155, 255, 255) #blue
+            font_name: "Assets/fonts/FjallaOne-Regular.ttf"
+            font_size: "70sp"
+
+        MDLabel:
+            id:loc_day
+            text: "Day Date/Month/Year"
+            pos_hint: {'center_x': .5,'center_y': .75}
+            halign:"center"
+            markup: True
+            font_name: "Assets/fonts/Asap-Regular.ttf"
+            font_size: "17sp"
+            color: rgba(255, 201, 101, 255) #orange
+            
+        Image:
+            source:"Assets/images/location.png"
+            size_hint: .05, .05
+            pos_hint: {'center_x': .05,'center_y': .97}
+
+        MDLabel:
+            id:location
+            text: ""
+            pos_hint: {'center_x': .6,'center_y': .97}
+            halign:"left"
+            font_name: "Assets/fonts/Asap-Regular.ttf"
+            font_size: "20sp"
+
+        Image:
+            id: weather_image
+            source:""
+            keep_ratio: True
+            size_hint_y: None
+            height:dp(150)
+            pos_hint: {'center_x': .31,'center_y': .58}
+
+        MDLabel:
+            id:temperature
+            text: "°"
+            markup: True
+            pos_hint: {'center_x': .76,'center_y': .59}
+            halign:"center"
+            font_name: "Assets/fonts/FjallaOne-Regular.ttf"
+            font_size: "60sp"
+            color: rgba(101, 155, 255, 255) #blue
+
+        MDLabel:
+            id:weather
+            text: ""
+            pos_hint: {'center_x': .73,'center_y': .52}
+            halign:"center"
+            font_name: "Assets/fonts/Asap-Regular.ttf"
+            font_size: "20sp"
+            color: rgba(255, 201, 101, 255) #orange
+
+        MDFloatLayout:
+            pos_hint: {'center_x': .25,'center_y': .4}   
+            size_hint: .22, .1 
+            Image:
+                source:"Assets/images/humidity.png"
+                pos_hint: {'center_x': .1,'center_y': .5}
+
+            MDLabel:
+                id: humidity
+                text: ""
+                markup: True
+                pos_hint: {'center_x': 1,'center_y': .7}
+                font_name: "Assets/fonts/Asap-Regular.ttf"
+                font_size: "18sp"
+                
+            
+            MDLabel:
+                text: "Humidity"
+                markup: True
+                pos_hint: {'center_x': 1,'center_y': .3}
+                font_size: "14sp"
+
+        MDFloatLayout:
+            pos_hint: {'center_x': .7,'center_y': .4}   
+            size_hint: .22, .1 
+            Image:
+                source:"Assets/images/windspeed.png"
+                pos_hint: {'center_x': .1,'center_y': .5}
+
+            MDLabel:
+                id: wind_speed
+                text: ""
+                markup: True
+                pos_hint: {'center_x': 1.1,'center_y': .7}
+                font_name: "Assets/fonts/Asap-Regular.ttf"
+                font_size: "16sp"
+            
+            MDLabel:
+                text: "Wind"
+                markup: True
+                pos_hint: {'center_x': 1.1,'center_y': .3}
+                font_size: "14sp"
+
+        MDFloatLayout:
+            size_hint_y: .3
+            canvas:
+                Color:
+                    rgb: rgba(101, 155, 255, 255) #blue
+                RoundedRectangle:
+                    size: self.size
+                    pos: self.pos
+                    radius: [10,10,0,0]
+            MDFloatLayout:
+                pos_hint: {'center_x': .5,'center_y': .71}
+                size_hint: .9, .32
+                canvas:
+                    Color:
+                        rgb: rgba(255, 201, 101, 255)
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [6]
+
+                TextInput:
+                    id: city_name
+                    hint_text:"Enter City Name"
+                    size_hint: 1, None
+                    pos_hint: {'center_x': .5,'center_y': .5}
+                    height: self.minimum_height
+                    multiline: False
+                    font_size: "20sp"
+                    hint_text_color: "white"
+                    foreground_color:"white"
+                    background_color:1,1,1,0
+                    padding: 15
+                    cursor_color: "white"
+                    cursor_width:"2sp"
+            Button:
+                text: "Get Weather"
+                font_size: "20sp"
+                size_hint: .9, .32
+                pos_hint: {'center_x': .5,'center_y': .29}
+                background_color:1,1,1,0
+                color: rgba(255, 201, 101, 255) #orange
+                on_release: root.search_weather()
+                canvas.before:
+                    Color:
+                        rgb: 1,1,1,1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [6]
+
+
