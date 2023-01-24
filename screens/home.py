@@ -9,7 +9,7 @@ import pytz
 
 class Home(MDScreen):
 
-    api_key =  "f660336cd37671a6310d8480c3fd5f93"
+    api_key =  ""
     
     def __init__(self, **kw):
         Builder.load_file("kv/home.kv")
